@@ -23,7 +23,7 @@ const show = (req, res) => {
   // Recuperiamo l'id dalla rotta
   const { id } = req.params;
 
-  const bookSql = `
+  const movieSql = `
     SELECT * 
     FROM movies
     WHERE id = ?`;
@@ -43,7 +43,7 @@ const show = (req, res) => {
     if (!movie) {
       return res.status(404).json({
         error: "Not found",
-        message: "Book not found",
+        message: "Movie not found",
       });
     }
 
@@ -63,7 +63,7 @@ const show = (req, res) => {
 
       // aggiungo la chiave reviews
       movie.reviews = results;
-      res.json(book);
+      res.json(movie);
     });
   });
 };
